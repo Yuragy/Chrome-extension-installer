@@ -1,5 +1,5 @@
 1. extension 
-2. loader - loader 
+2. loader
 3. loaderPanel - panel and server for loader 
 4. scrypt - additional utilities 
 5. server - server and panel for extension 
