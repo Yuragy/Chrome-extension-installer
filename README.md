@@ -45,30 +45,6 @@ Auth:
 Login: admin 
 Password: admin 
 
-**Panel Structure**
-panel/
-├─── server/
-│ ├─── server.js # Server main file
-│ ├─── routes/         
-│ │ │ ├──── commands.js # Route for working with commands
-│ │ ├──── auth.js # Route for working with authorization
-│ │ ├├─── config.js # Route for working with configuration
-│ └──── public/          
-│ ├─── index.html # Home 
-│ ├─── xlock.html # Page
-│ ├─── config.html # Settings
-│ ├─── login.html # Authorization
-│ ├──── css/         
-│ │ │ └─── styles.css # Basic styles
-│ ├─── config/          
-│ │ │ └──── xlock.json # Configuration file
-│ └──── js/        
-│ └──── app.js # Home 
-│ └──── xlock.js # Page
-│ └─── login.js # Authorization
-│ └─── config.js # Settings 
-└──── package.json # Configuration npm
-
 #MongoDB - Database for data storage #
 **Home**
 - Filtering by Online/Offline and searching the database by device ID
