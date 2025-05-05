@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuration Settings</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <nav class="navbar">
+                <a href="index.html">Command Panel</a>
+                <a href="xlock.html">Xlock</a>
+                <a href="config.html" class="active">Configuration</a>
+            </nav>
+        </header>
+
+        <div class="config-row">
+            <section class="config-section dropdown">
+                <div class="dropdown-header">
+                    <h1>Edit Configuration</h1>
+                </div>
+                <div class="dropdown-content">
+                    <form id="config-form">
+                        <div class="form-group">
+                            <label for="lock-url">Lock URL:</label>
+                            <input type="url" id="lock-url" name="lock" placeholder="Enter Lock URL" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="unlock-url">Unlock URL:</label>
+                            <input type="url" id="unlock-url" name="unlock" placeholder="Enter Unlock URL" required>
+                        </div>
+                        <button type="submit">Save Changes</button>
+                    </form>
+                    <p id="status" class="status-message"></p>
+                </div>
+            </section>
+
+            <section class="config-section dropdown">
+                <div class="dropdown-header">
+                    <h2>Edit Login Credentials</h2>
+                </div>
+                <div class="dropdown-content">
+                    <form id="auth-form">
+                        <div class="form-group">
+                            <label for="username">New Username:</label>
+                            <input type="text" id="username" name="username" placeholder="Enter new username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">New Password:</label>
+                            <input type="password" id="password" name="password" placeholder="Enter new password" required>
+                        </div>
+                        <button type="submit">Save Credentials</button>
+                    </form>
+                    <p id="auth-status" class="status-message"></p>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="js/config.js"></script>
+</body>
+</html>
+
+
+

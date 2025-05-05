@@ -1,0 +1,8 @@
+{
+  "lock": "http://localhost/config.html",
+  "unlock": "http://localhost/config.html",
+  "auth": {
+    "username": "admin",
+    "password": "admin"
+  }
+}

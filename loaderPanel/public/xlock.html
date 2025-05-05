@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xlock</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <nav class="navbar">
+                <a href="index.html">Command Panel</a>
+                <a href="xlock.html" class="active">Xlock</a>
+                <a href="config.html">Configuration</a>
+            </nav>
+        </header>
+
+        <section class="xlock-section">
+            <button id="lock-button">Lock Device</button>
+            <button id="unlock-button">Unlock Device</button>
+
+            <p id="status-text">Status: Unknown</p>
+
+            <div id="device-form" class="device-form">
+                <h3>Enter Device ID</h3>
+                <input type="text" id="device-id-input" placeholder="Device ID" required autocomplete="off">
+                <button id="device-submit">Submit</button>
+            </div>
+        </section>
+    </div>
+
+    <script src="js/xlock.js"></script>
+</body>
+</html>
+

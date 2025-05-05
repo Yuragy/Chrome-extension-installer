@@ -1,0 +1,8 @@
+{
+    "lock": "https://example.com/lock",
+    "unlock": "https://example.com/unlock",
+    "auth": {
+        "username": "admin",
+        "password": "password"
+    }
+}

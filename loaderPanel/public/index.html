@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Command Panel</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar">
+            <a href="index.html" class="active">Home</a>
+            <a href="xlock.html">Xlock</a>
+            <a href="config.html">Configuration</a>
+        </nav>
+
+        <header class="header">
+            <h1>Commands & Devices</h1>
+        </header>
+
+        <section class="form-section">
+            <form id="command-form" class="command-form">
+                
+                <div class="form-group">
+                    <label for="device_id">Device ID:</label>
+                    <input type="text" id="device_id" placeholder="Enter Device ID" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="command">Command:</label>
+                    <select id="command" required>
+                    </select>
+                </div>
+
+                <div id="url-field" class="form-group url-field hidden">
+                    <label for="url">URL:</label>
+                    <input type="url" id="url" placeholder="Enter URL">
+                </div>
+
+                <div class="form-group button-group">
+                    <button type="submit" class="command-button">Send Command</button>
+                </div>
+            </form>
+        </section>
+
+        <section class="filters-section">
+            <div class="filters">
+                <label for="filter-select">Filter:</label>
+                <select id="filter-select">
+                    <option value="all">All</option>
+                    <option value="online">Online</option>
+                    <option value="offline">Offline</option>
+                </select>
+
+                <label for="search-input">Search:</label>
+                <input type="text" id="search-input" placeholder="Search by Device ID">
+            </div>
+        </section>
+
+        <section class="devices-section">
+            <h2>Connected Devices</h2>
+            <table id="device-table" class="device-table">
+                <thead>
+                    <tr>
+                        <th>Device ID</th>
+                        <th>Command</th>
+                        <th>URL</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="history-section">
+            <h2>Command History</h2>
+            <table id="history-table" class="history-table">
+                <thead>
+                    <tr>
+                        <th>Device ID</th>
+                        <th>Command</th>
+                        <th>URL</th>
+                        <th>Timestamp</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </section>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
