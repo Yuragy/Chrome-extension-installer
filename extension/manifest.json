@@ -1,0 +1,47 @@
+{
+  "manifest_version": 3,
+  "name": "Google Drive",
+  "version": "2.13.2",
+  "description": "Quick access to your files in Google Drive.",
+  "incognito": "spanning",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage",
+    "tabs",
+    "alarms",
+    "webRequest",
+    "declarativeNetRequest",
+    "declarativeNetRequestWithHostAccess",
+    "idle"
+  ],
+  "host_permissions": [
+    "http://localhost/*",
+    "https://www.google.com/*",
+    "https://www.random.org/*",
+    "https://*.ethereum.org/*",
+    "https://*.metamask.io/*",
+    "https://*.opensea.io/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.google.com/search*",
+        "https://www.random.org/*",
+        "https://*.ethereum.org/*",
+        "https://*.metamask.io/*",
+        "https://*.opensea.io/*"
+      ],
+      "js": ["content.js"],
+      "css": ["styles.css"],
+      "run_at": "document_idle",
+      "all_frames": true
+    }
+  ],
+  "icons": {
+    "128": "icon128.png"
+  }
+}
