@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extension Panel</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo-header">
+                <img src="logo.png" alt="Logo" class="logo">
+            </div>
+        </header>
+        <section id="loginSection">
+            <form id="loginForm" class="centered-form">
+                <div class="inputGroup">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" placeholder="Enter your username" required>
+                </div>
+                <div class="inputGroup">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                </div>
+                <button type="submit">Login</button>
+            </form>
+            <div id="loginStatus"></div>
+        </section>
+    </div>
+    <script src="login.js"></script>
+</body>
+</html>
+
+

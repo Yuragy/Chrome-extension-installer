@@ -1,0 +1,498 @@
+body {
+    font-family: "Fira Code", monospace, sans-serif;
+    background-color: #0d0d0d;
+    margin: 0;
+    padding: 0;
+    color: #ccc;
+    overflow-x: hidden;
+}
+
+#toggleMetaMaskFields {
+    background: #222;
+    color: #ccc;
+    border: 1px solid #555;
+    padding: 10px 15px;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    margin: 0 auto; 
+    display: block; 
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+#toggleMetaMaskFields:hover {
+    background: #333;
+    color: #fff;
+}
+
+#metaMaskPresetForm {
+    visibility: hidden; 
+    opacity: 0; 
+    max-height: 0; 
+    overflow: hidden; 
+    margin-top: 10px;
+    transition: max-height 0.3s ease, opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    z-index: 1000;
+    position: relative;
+}
+
+#metaMaskPresetForm.open {
+    visibility: visible; 
+    opacity: 1; 
+    max-height: 800px; 
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #111;
+    border: 1px solid #444;
+    border-radius: 10px;
+    box-shadow: none;
+    border: none;
+}
+
+header {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;    
+    justify-content: center;
+    gap: 10px;              
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+header .logo {
+    width: 100px;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease-in-out;
+}
+
+header .logo:hover {
+    transform: scale(1.1);
+}
+
+h1, h2, h3 {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 400;
+    color: #ccc;
+    margin: 0;
+}
+
+h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+    color: #ccc; 
+    text-align: center;
+}
+
+h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #555; 
+    padding-bottom: 5px;
+    text-align: center;
+    color: #ccc;
+    cursor: pointer;
+}
+
+h3 {
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.sectionHint {
+    font-size: 14px;
+    color: #bbb; 
+    margin-bottom: 10px;
+}
+
+section {
+    margin-bottom: 40px;
+    border: 1px solid #444; 
+    padding: 20px; 
+    background: #111; 
+    border-radius: 8px;
+    box-shadow: none;
+}
+
+section h2 {
+    margin-top: 0;
+}
+
+#loginSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+    margin: 0;
+    border: none;
+}
+
+#loginForm {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    background: #0d0d0d;
+    border-radius: 8px;
+    box-shadow: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.inputGroup {
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+label {
+    display: block;
+    font-weight: 400;
+    margin-bottom: 6px;
+    color: #ccc; 
+    font-size: 14px;
+}
+
+input[type="text"], input[type="password"], input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #ccc; 
+    background-color: #000;
+    box-shadow: none;
+}
+
+input[type="text"]::placeholder,
+input[type="password"]::placeholder,
+input[type="number"]::placeholder {
+    color: #999; 
+}
+
+button {
+    background: #000;
+    color: #ccc;
+    border: 1px solid #555; 
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-top: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 14px;
+    display: inline-block;
+    transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+button:hover {
+    background-color: #555; 
+    color: #fff;      
+}
+
+.accordion-item {
+    margin-bottom: 10px;
+}
+
+.accordion-header {
+    background: #000;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    user-select: none;
+    transition: background 0.3s;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.accordion-header:hover {
+    background: #333; 
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.accordion-content.open {
+    max-height: 1000px;
+}
+
+.presetValuesContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.presetGroup {
+    background-color: #000;
+    padding: 6px;
+    border-radius: 4px;
+    box-shadow: none;
+    border: none;
+    margin-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+.presetGroup label {
+    font-size: 12px;
+    color: #ccc; 
+    margin-bottom: 4px;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.presetGroup input {
+    font-size: 12px;
+    width: 100%;
+    padding: 5px;
+    background: #222;
+    border: 1px solid #555; 
+    color: #ccc;           
+    box-sizing: border-box;
+}
+
+.presetGroup select {
+    font-size: 12px;
+    width: 100%;
+    padding: 5px;
+    background: #222;
+    border: 1px solid #555;
+    color: #ccc;
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+
+.sendPresetButton {
+    margin-top: 8px;
+}
+
+#lastGeneratedNumber {
+    font-size: 18px;
+}
+
+#requestHistory {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#requestHistory li {
+    padding: 6px;
+    margin-bottom: 4px;
+    background-color: #000;
+    border-radius: 4px;
+    border: none;
+    font-size: 12px;
+    transition: background 0.3s ease-in-out;
+}
+
+#requestHistory li:hover {
+    background-color: #333; 
+}
+
+#activityTable {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    background-color: #000;
+    color: #ccc; 
+}
+
+#activityTable th, #activityTable td {
+    text-align: left;
+    padding: 10px;
+    border: 1px solid #444;
+}
+
+#activityTable th {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 400;
+    background-color: #0d0d0d;
+    color: #ccc;
+}
+
+#activityTable tr:nth-child(even) {
+    background-color: #0d0d0d;
+}
+
+#activityTable tr:nth-child(odd) {
+    background-color: #000;
+}
+
+#activityTable tr:hover {
+    background-color: #333;
+    cursor: pointer;
+}
+
+#activityTable td:first-child {
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+#activityTable td:first-child.online {
+    color: #FFD700;
+}
+#activityTable td:first-child.offline {
+    color: #FF0000;
+}
+section {
+    overflow-x: auto;
+    max-width: 100%;
+}
+
+#activityTable {
+    table-layout: fixed;
+    width: 100%;
+    max-width: 100%;
+    white-space: nowrap;
+}
+
+#activityTable th, #activityTable td {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px;
+}
+
+#status,
+#presetStatus {
+    margin-top: 10px;
+    color: #ccc;
+}
+
+.date-time {
+    font-size: 16px;
+    color: #ccc;
+    text-align: center;
+    margin-top: 5px;
+}
+
+#metaMaskTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+#metaMaskTable th, #metaMaskTable td {
+    border: 1px solid #444;
+    padding: 5px;
+}
+
+#metaMaskTable th {
+    background: #444; 
+    color: #fff; 
+    text-align: left;
+}
+
+#metaMaskTable td {
+    background: #111;
+    color: #ccc; 
+}
+
+#presetStatus {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #ccc;
+}
+
+.no-data td {
+    text-align: center;
+    color: #999;
+}
+
+#currentDateTime {
+    font-size: 0.9em;
+    color: #ccc;
+}
+
+nav {
+    background: #000;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 15px;
+}
+
+nav ul li {
+    margin: 0;
+    position: relative;
+}
+
+nav ul li a {
+    color: #ccc;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    position: relative;
+    padding: 5px 0;
+    transition: color 0.3s ease-in-out;
+}
+
+nav ul li a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0%;
+    height: 2px;
+    background: #ccc; 
+    transition: width 0.3s ease-in-out;
+}
+
+nav ul li a:hover {
+    color: #fff;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+.credentials-container {
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    overflow: hidden;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

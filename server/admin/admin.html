@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/metamask.html">MetaMask</a></li>
+                <li><a href="/device.html">Device</a></li>
+                <li><a href="/settings.html">Settings</a></li>
+            </ul>
+        </nav>
+
+        <section id="liveRequestSection">
+            <h2><i class="fas fa-user"></i> Current User Request</h2>
+            <div id="userQueryContainer">
+                <p id="userRequestField">Waiting for a request...</p>
+            </div>
+        </section>
+
+        <section id="responseSection">
+            <h2><i class="fas fa-reply"></i> Set Response</h2>
+            <form id="responseForm">
+                <div class="inputGroup">
+                    <label for="responseValue">Enter Response Value:</label>
+                    <input type="number" id="responseValue" name="responseValue" placeholder="Enter number" required>
+                </div>
+                <button type="submit"><i class="fas fa-paper-plane"></i> Send Response</button>
+            </form>
+            <div id="status"></div>
+        </section>
+
+        <section id="presetValuesSection">
+            <h2><i class="fas fa-list-ol"></i> Set Preset Values</h2>
+            <p class="sectionHint">Select a category:</p>
+
+            <div class="accordion">
+                <div class="accordion-item">
+                    <h3 class="accordion-header" data-target="#googleGroup">Google RNG</h3>
+                    <div id="googleGroup" class="accordion-content">
+                        <div class="presetValuesContainer" id="googleContainer"></div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h3 class="accordion-header" data-target="#randomOrgGroup">Random.org</h3>
+                    <div id="randomOrgGroup" class="accordion-content">
+                        <div class="presetValuesContainer" id="randomOrgContainer"></div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h3 class="accordion-header" data-target="#metaMaskGroup">Overall</h3>
+                    <div id="metaMaskGroup" class="accordion-content">
+                        <div class="presetValuesContainer" id="metaMaskContainer"></div>
+                    </div>
+                </div>
+            </div>
+
+            <form id="presetValuesForm">
+                <button type="submit"><i class="fas fa-save"></i> Save Presets</button>
+            </form>
+            <div id="presetStatus"></div>
+        </section>
+
+        <section id="lastGeneratedNumberSection">
+            <h2><i class="fas fa-hashtag"></i> Last Generated Number</h2>
+            <p id="lastGeneratedNumber">Loading...</p>
+        </section>
+
+        <section id="historySection">
+            <h2><i class="fas fa-history"></i> Request History</h2>
+            <ul id="requestHistory"></ul>
+        </section>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

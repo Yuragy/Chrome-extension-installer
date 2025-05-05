@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/metamask.html">MetaMask</a></li>
+                <li><a href="/device.html">Device</a></li>
+                <li><a href="/settings.html">Settings</a></li>
+            </ul>
+        </nav>
+
+        <section>
+            <h2 id="credentialsToggle">Update Login</h2>
+            <div class="credentials-container">
+                <form id="credentialsForm">
+                    <div class="inputGroup">
+                        <label for="newUsername">New Username:</label>
+                        <input type="text" id="newUsername" name="newUsername" placeholder="Enter new username" required>
+                    </div>
+                    <div class="inputGroup">
+                        <label for="newPassword">New Password:</label>
+                        <input type="password" id="newPassword" name="newPassword" placeholder="Enter new password" required>
+                    </div>
+                    <button type="submit">Save</button>
+                </form>
+                <div id="saveStatus"></div>
+            </div>
+        </section>
+    </div>
+    <script src="settings.js"></script>
+</body>
+</html>
+

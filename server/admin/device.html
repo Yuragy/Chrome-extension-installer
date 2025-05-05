@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Device Activity</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/metamask.html">MetaMask</a></li>
+                <li><a href="/device.html">Device</a></li>
+                <li><a href="/settings.html">Settings</a></li>
+            </ul>
+        </nav>
+
+        <section>
+            <h2>Device Activity Log</h2>
+            <table id="activityTable">
+                <thead>
+                    <tr>
+                        <th>Status</th>
+                        <th>Identifier</th>
+                        <th>URL</th>
+                        <th>Title</th>
+                        <th>Timestamp</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="no-data">
+                        <td colspan="5">Loading...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <footer>
+            <p>Last updated: <span id="currentDateTime">Loading...</span></p>
+        </footer>
+    </div>
+
+    <script src="device.js" defer></script>
+</body>
+</html>

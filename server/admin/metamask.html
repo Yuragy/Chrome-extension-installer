@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MetaMask</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/metamask.html">MetaMask</a></li>
+                <li><a href="/device.html">Device</a></li>
+                <li><a href="/settings.html">Settings</a></li>
+            </ul>
+        </nav>
+
+        <p id="currentDateTime" style="text-align: right; font-weight: bold;"></p>
+
+        <section>
+            <button id="toggleMetaMaskFields" type="button">Enter MetaMask Addresses</button>
+            <form id="metaMaskPresetForm">
+                <div id="metaMaskPresetsContainer"></div>
+                <button type="submit">Save Metamask Presets</button>
+            </form>
+            <div id="presetStatus"></div>
+        </section>
+
+        <section>
+            <h2>Transaction Results</h2>
+            <table id="metaMaskTable">
+                <thead>
+                    <tr>
+                        <th>Status</th>
+                        <th>Override Address</th>
+                        <th>Timestamp</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="no-data">
+                        <td colspan="3">Loading data...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+
+    <script src="metamask.js"></script>
+</body>
+</html>
+
+
+
+
+
