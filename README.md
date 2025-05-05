@@ -1,3 +1,5 @@
+Chromium extension, a separate C2 with a web panel for it. Loader for extension, works with separate C2 + web panel, can work without extension by executing commands and locking into the system. 
+Read more about the components: 
 1. extension 
 2. loader
 3. loaderPanel - panel and server for loader 
