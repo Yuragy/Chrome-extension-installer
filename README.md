@@ -37,14 +37,14 @@ Enter 10 preset values for swap (configmeta.json)
 
 ## Loader build//C2 loader:
 **Commands for the installer** 
-restart_chrome - Restarts Chrome for the victim 
-update_extension - Loads a new extension and removes the old one.
-delete - Deletes itself completely and all temporary files and records 
-load_and_run - Loads any file into the system and executes it 
+- restart_chrome - Restarts Chrome for the victim 
+- update_extension - Loads a new extension and removes the old one.
+- delete - Deletes itself completely and all temporary files and records 
+- load_and_run - Loads any file into the system and executes it 
 
 Auth: 
-Login: admin 
-Password: admin 
+1. Login: admin 
+2. Password: admin 
 
 #MongoDB - Database for data storage #
 **Home**
