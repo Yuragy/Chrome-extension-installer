@@ -113,4 +113,8 @@ MonroDB is used, install monrodb compass
 - lnk is a script to automatically create lnk that opens pdf and runs install.vbs to load and silently run load.exe 
 - loadermac is the macOS version of the installer, demo version in progress, requires admin password.
 
-Use the repository wisely, this is a tutorial demonstration of integrating an extension into chromeium and manipulating randomizers. You are solely responsible for the use of this code. Any illegal actions are condemned and not supported. 
+## 🚫 Disclaimer
+
+This repository is provided for **educational purposes only** and intended for **authorized security research**.
+Use of these materials in unauthorized or illegal activities is **strictly prohibited**.
+
