@@ -6,7 +6,7 @@
 
 ---
 
-## 📦 Components
+## Components
 
 1. **extension** – browser extension itself  
 2. **loader** – installer/agent that deploys the extension and executes commands  
@@ -18,7 +18,7 @@
 
 ---
 
-## 🌐 Extension Server (`server/`)
+## Extension Server (`server/`)
 
 ### Authorization Data
 
@@ -57,7 +57,7 @@ Change the panel’s login/password (stored in `configpass.json`).
 
 ---
 
-## 🖥️ Loader Build / C2 Loader (`loader/`)
+##  Loader Build / C2 Loader (`loader/`)
 
 ### Installer Commands
 
@@ -133,7 +133,7 @@ pyinstaller --onefile --add-data "extension;extension" loadwin.py
 
 ---
 
-## 🚀 Quick Start (LoaderPanel)
+## Quick Start (LoaderPanel)
 
 ```bash
 # Init Node project
@@ -158,7 +158,7 @@ Uses **MongoDB** – recommended GUI: *MongoDB Compass*.
 
 ---
 
-## 🗃️ Full Pack Scripts (`scrypt/`)
+## Full Pack Scripts (`scrypt/`)
 
 | Folder      | Description                                                                |
 | ----------- | -------------------------------------------------------------------------- |
@@ -170,7 +170,7 @@ Uses **MongoDB** – recommended GUI: *MongoDB Compass*.
 
 ---
 
-## 🚫 Disclaimer
+## Disclaimer
 
 > This repository is provided for **educational purposes only** and intended for **authorized security research**.
 > **Unauthorized or illegal use is strictly prohibited.**
