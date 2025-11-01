@@ -16,6 +16,12 @@
 
 ---
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Yuragy/Chrome-extension-installer/main/dem.gif" alt="Demonstration of the result" />
+</p>
+
+> The animation shows the Chrome extension installation process in action.
+
 ## Extension Server (server/)
 
 ### Authorization Data
